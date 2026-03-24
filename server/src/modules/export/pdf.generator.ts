@@ -23,7 +23,7 @@ export const generatePdfBuffer = async (
 
     const chunks: Buffer[] = [];
 
-    pdf.on("data", (chunk) => {
+    pdf.on("data", (chunk: Buffer) => {
       chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
     });
 
