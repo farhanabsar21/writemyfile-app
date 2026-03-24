@@ -1,0 +1,20 @@
+export const APP_CONSTANTS = {
+  AUTH: {
+    SALT_ROUNDS: 10,
+    TOKEN_EXPIRES_IN: "7d",
+  },
+  DOCUMENT: {
+    TITLE_MAX_LENGTH: 150,
+    CONTENT_MAX_LENGTH: 50000,
+  },
+  REQUEST: {
+    JSON_LIMIT: "500kb",
+    URL_ENCODED_LIMIT: "500kb",
+  },
+  RATE_LIMIT: {
+    GLOBAL_WINDOW_MS: 15 * 60 * 1000,
+    GLOBAL_MAX_REQUESTS: 300,
+    AUTH_WINDOW_MS: 15 * 60 * 1000,
+    AUTH_MAX_REQUESTS: 20,
+  },
+} as const;

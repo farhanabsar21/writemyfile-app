@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../../common/middlewares/auth.middleware");
+const validate_middleware_1 = require("../../common/middlewares/validate.middleware");
+const document_controller_1 = require("./document.controller");
+const export_routes_1 = __importDefault(require("../export/export.routes"));
+const document_validation_1 = require("./document.validation");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.authMiddleware);
+router.post("/", (0, validate_middleware_1.validate)({ body: document_validation_1.createDocumentSchema }), document_controller_1.createDocumentHandler);
+router.get("/", document_controller_1.getDocumentsHandler);
+router.get("/:id", (0, validate_middleware_1.validate)({ params: document_validation_1.documentIdParamSchema }), document_controller_1.getDocumentByIdHandler);
+router.put("/:id", (0, validate_middleware_1.validate)({ params: document_validation_1.documentIdParamSchema, body: document_validation_1.updateDocumentSchema }), document_controller_1.updateDocumentHandler);
+router.delete("/:id", (0, validate_middleware_1.validate)({ params: document_validation_1.documentIdParamSchema }), document_controller_1.deleteDocumentHandler);
+router.use("/:id/export", export_routes_1.default);
+exports.default = router;
