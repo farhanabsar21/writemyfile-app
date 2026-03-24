@@ -1,4 +1,4 @@
-import { Router } from "express";
+import { Request, Response, Router } from "express";
 import { env } from "../config/env";
 import { sendSuccess } from "../utils/apiResponse";
 import authRoutes from "../modules/auth/auth.routes";
@@ -7,7 +7,7 @@ import templateRoutes from "../modules/template/template.routes";
 
 const router = Router();
 
-router.get("/health", (_req, res) => {
+router.get("/health", (_req: Request, res: Response) => {
   sendSuccess(res, {
     message: "Server is running",
     data: {
