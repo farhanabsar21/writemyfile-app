@@ -2,11 +2,11 @@
 
 Convert AI-generated conversations into clean, structured, professional documents — exportable as PDF and DOCX.
 
-![alt text](image.png)
-
 ## 🚀 Live Demo
 
 Frontend: https://writemyfile.netlify.app
+
+![alt text](image.png)
 
 ---
 
